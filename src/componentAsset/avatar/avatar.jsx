@@ -3,8 +3,7 @@ export default function AvatarComponent (props) {
  return (
     <Avatar 
     name={props.name} 
-    size={props.size}
-    loading='lazy' 
+    size={props.size} 
     colorScheme='telegram'
     showBorder={true}
     src={props.img}

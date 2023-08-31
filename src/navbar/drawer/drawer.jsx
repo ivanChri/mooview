@@ -1,4 +1,4 @@
-import { lazy,Suspense,useContext } from 'react'
+import { useContext } from 'react'
 import { context } from '../navbar.jsx'
 import {
     Drawer,
@@ -14,9 +14,9 @@ import {
   } from '@chakra-ui/react'
   import { HamburgerIcon } from '@chakra-ui/icons'
   import { useRef,createContext} from 'react'
-  const SearchComponent = lazy(()=>import('../searchComponent/search.jsx'))
-  const LinkComponent = lazy(()=> import('../link/link.jsx'))
-  const UserComponent = lazy(() => import('../user/user.jsx'))
+  import UserComponent from '../user/user.jsx'
+  import LinkComponent from '../link/link.jsx'
+  import SearchComponent from '../searchComponent/search.jsx'
   export const drawerContext = createContext(null)
   export  function Drawers(){
      const { user } = useContext(context)
@@ -47,11 +47,9 @@ import {
                   <DrawerHeader><Text fontSize='1.8rem'>Mooview</Text></DrawerHeader>
                     <DrawerBody mb='4'>
                         <Stack direction='column' p='1' spacing='24px' text-align='center' mb='4' mt='2' bg='inherit'>
-                         <Suspense>
                           {user && <UserComponent />}
                           <LinkComponent />
                           <SearchComponent />
-                         </Suspense>
                          </Stack>
                     </DrawerBody>
                   </DrawerContent>
